@@ -8,9 +8,9 @@ export default class VideoList extends Component {
   render() {
     const videos = this.props.videos;
     return (
-      <div className="video-tiem ui list">
+      <div className="ui list">
         {videos.map(v => (
-          <VideoItem key={v.etag} video={v} />
+          <VideoItem key={v.etag} video={v} onSelect={this.props.onSelect} />
         ))}
       </div>
     );
