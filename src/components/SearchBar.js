@@ -18,6 +18,9 @@ export default class SearchBar extends Component {
       <div className="ui segment">
         <form className="ui form" onSubmit={this.onSubmit}>
           <div className="ui field">
+            <label>Search video:</label>
+          </div>
+          <div className="ui field">
             <input value={this.state.inputVal} onChange={this.onInputChange} />
           </div>
         </form>

@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import youtube from "./apis/youtube";
 import SearchBar from "./components/SearchBar";
+import VideoList from "./components/VideoList";
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { videos: [] };
+  }
   onHandleSubmit = async input => {
     console.log(input);
     const result = await youtube.get("/search", {
@@ -9,7 +14,8 @@ export default class App extends Component {
         q: input
       }
     });
-    console.log(result);
+    console.log(result.data.items);
+    this.setState({ ...this.state, videos: result.data.items });
   };
   render() {
     return (
@@ -20,7 +26,7 @@ export default class App extends Component {
             <div>content</div>
           </div>
           <div className="six wide column">
-            <div>list</div>
+            <VideoList videos={this.state.videos} />
           </div>
         </div>
       </div>
